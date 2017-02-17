@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:20:22 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/15 09:36:00 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/16 08:33:09 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main()
 {
-	ft_printf();
+	ft_printf("%s les gens j ai %d ans", "salut", 50);
+	/*printf("%b", "hello");*/
 	return (0);
 }
