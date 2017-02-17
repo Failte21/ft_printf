@@ -1,6 +1,7 @@
 Ft_printf
 
 cases to handle:
+s
 S
 p
 d
