@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 18:37:07 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/17 09:18:05 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:24:19 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	raise_error(int error_id)
 static int	is_valid_flag(char c)
 {
 	return (c == 's' || c == 'd' || c == 'd' || c == 'c' || c == 'p' ||
-			c == 'i' || c == 'u' || c == 'o' || c == 'x');
+			c == 'i' || c == 'u' || c == 'o' || c == 'x' || c == 'X' ||
+			c == '%');
 }
 
 int			error_handler(char c)

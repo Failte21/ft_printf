@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 22:02:44 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/17 11:34:56 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/17 14:15:37 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,14 @@ int	funsigned_hexa(va_list ap)
 
 	hex = va_arg(ap, int);
 	ft_putnbr_base(hex, 16, 'a');
+	return (ft_nblen(hex, 16));
+}
+
+int	funsigned_hexalarge(va_list ap)
+{
+	unsigned int	hex;
+
+	hex = va_arg(ap, int);
+	ft_putnbr_base(hex, 16, 'A');
 	return (ft_nblen(hex, 16));
 }

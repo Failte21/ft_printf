@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/17 11:37:54 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/17 19:38:23 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,51 +24,46 @@ static void	init_functions(int (*p[127]) (va_list))
 	p['u'] = funsigned_decimal;
 	p['U'] = funsigned_decimal;
 	p['x'] = funsigned_hexa;
-	p['X'] = funsigned_hexa;
+	p['X'] = funsigned_hexalarge;
 	p['c'] = funsigned_char;
 }
 
-static int	display_specifier(char c, va_list ap, int (*p[127]) (va_list),
-		int *print_len)
+static int	specifier_handler(int (*p[127]) (va_list), va_list ap, 
+		t_block block)
 {
-	if (error_handler(c))
+	if (block.specifier == '%')
+	{
+		ft_putchar('%');
 		return (1);
-	*print_len += (*p[c])(ap);
-	return (0);
+	}
+	return (*p[block.specifier])(ap);
 }
 
-static int	run(const char * restrict s, va_list ap, int (*p[127]) (va_list))
+int			display(t_block blocks[500], int len, va_list ap,
+		int (*p[127]) (va_list))
 {
-	int				len;
+	int				i;
+	unsigned int	space;
 	int				print_len;
-	unsigned int	i;
 
-	i = 0;
-	print_len = 0;
-	len = ft_strlen(s);
-	while (i < len)
+	i = -1;
+	while (++i < len)
 	{
-		while (s[i] && s[i] != '%')
+		print_len += (blocks[i].space_before + blocks[i].space_after); 
+		space = 0;
+		while (space++ < blocks[i].space_before)
+			write(1, " ", 1);
+		if (blocks[i].type == SPECIFIER)
+			print_len = specifier_handler(p, ap, blocks[i]);
+		else
 		{
-			write(1, s + i, 1);
-			print_len++;
-			i++;
+			write(1, blocks[i].start, blocks[i].len);
+			print_len += blocks[i].len;
 		}
-		if (s[i] == '%')
-		{
-			i++;
-			if (s[i] == '%')
-			{
-				print_len++;
-				ft_putchar('%');
-			}
-			else if (display_specifier(s[i], ap, p, &print_len))
-				return (1);
-		}
-		i++;
+		space = 0;
+		while (space++ < blocks[i].space_after)
+			write(1, " ", 1);
 	}
-	va_end(ap);
-	write(1, "\0", 1);
 	return (print_len);
 }
 
@@ -76,8 +71,12 @@ int			ft_printf(const char * restrict format, ...)
 {
 	va_list	ap;
 	int		(*p[127]) (va_list);
+	t_block	blocks[500];
+	int		array_len;
 
+	if ((array_len = parser(format, blocks)) < 0)
+		return (1);
 	init_functions(p);
 	va_start(ap, format);
-	return (run(format, ap, p));
+	return (display(blocks, array_len, ap, p));
 }

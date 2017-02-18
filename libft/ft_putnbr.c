@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 09:18:27 by lsimon            #+#    #+#             */
-/*   Updated: 2016/11/04 10:11:28 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/17 15:09:22 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 void	ft_putnbr(int n)
 {
-	if (n == -2147483648)
-	{
-		ft_putnbr(-214748364);
-		n = 8;
-	}
-	else if (n < 0)
+	long int ln;
+	if (n < 0)
 	{
 		ft_putchar('-');
 		n *= -1;
 	}
-	if (n < 10)
-		ft_putchar(n + '0');
+	ln = n < 0 ? -((long)n) : (long)n;
+	if (ln < 10)
+		ft_putchar(ln + '0');
 	else
 	{
-		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + '0');
+		ft_putnbr(ln / 10);
+		ft_putchar((ln % 10) + '0');
 	}
 }

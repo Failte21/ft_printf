@@ -6,7 +6,7 @@
 #    By: lsimon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/15 09:10:45 by lsimon            #+#    #+#              #
-#    Updated: 2017/02/17 10:45:10 by lsimon           ###   ########.fr        #
+#    Updated: 2017/02/17 18:14:00 by lsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC =	libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c\
 		libft/ft_sort_int_tab.c libft/ft_get_next_line.c libft/ft_word_count.c\
 		libft/ft_word_count_line.c libft/ft_ishex.c libft/ft_atoi_max.c\
 		libft/ft_putnbr_base.c libft/ft_nblen.c\
-		srcs/ft_printf.c srcs/errors.c srcs/f_list.c
+		srcs/ft_printf.c srcs/errors.c srcs/f_list.c srcs/parser.c
 
 OBJ = $(SRC:.c=.o)
 
