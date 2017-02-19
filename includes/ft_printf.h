@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/17 19:11:17 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/18 23:24:21 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int				funsigned_decimal(va_list ap);
 int				funsigned_hexa(va_list ap);
 int				funsigned_hexalarge(va_list ap);
 int				parser(const char * restrict s, t_block blocks[500]);
+void			print_unsigned_base(unsigned int n, char base, char a);
 
 #endif

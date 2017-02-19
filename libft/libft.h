@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:52:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/17 11:33:23 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/18 23:16:07 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int				ft_get_next_line(const int fd, char **line);
 int				ft_word_count(const char *s, char c);
 int				ft_word_count_line(const char *s);
 int				ft_ishex(char c);
-void			ft_putnbr_base(int n, int base, char a);
 int				ft_nblen(int nb, int base);
 
 #endif

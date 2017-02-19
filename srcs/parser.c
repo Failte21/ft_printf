@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 15:18:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/17 19:11:09 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/02/18 23:01:03 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int				parser(const char * restrict s, t_block blocks[500])
 			}
 			if (error_handler(*s))
 				return (-1);
+			space = *s == '%' ? 0 : space;
 			blocks[j] = new_block(NULL, SPECIFIER, space);
 			blocks[j].specifier = *s;
 			j++;

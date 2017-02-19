@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/17 07:51:35 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/17 15:17:37 by lsimon           ###   ########.fr       */
+/*   Created: 2017/02/18 23:15:28 by lsimon            #+#    #+#             */
+/*   Updated: 2017/02/18 23:17:07 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_base(int n, int base, char a)
+void	ft_print_unsigned_base(unsigned int n, char base, char a)
 {
 	char		to_add;
 	int			n_mod;
 	long int	ln;
 
-	if (n < 0 && base == 10)
-		ft_putchar('-');
 	ln = n > 0 ? (long)n : -((long)n);
 	if (ln < base)
 	{
