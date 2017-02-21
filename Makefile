@@ -6,7 +6,7 @@
 #    By: lsimon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/15 09:10:45 by lsimon            #+#    #+#              #
-#    Updated: 2017/02/19 17:24:13 by lsimon           ###   ########.fr        #
+#    Updated: 2017/02/21 11:34:37 by lsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRC =	libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c\
 		libft/ft_word_count_line.c libft/ft_ishex.c libft/ft_atoi_max.c\
 		libft/ft_nblen.c\
 		srcs/ft_printf.c srcs/errors.c srcs/f_list.c srcs/parser.c\
-		srcs/print_unsigned_base.c
+		srcs/print_unsigned_base.c srcs/print_unsigned_long_base.c\
+		srcs/flags.c srcs/init.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -53,7 +54,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o : %.c
-	gcc -o $@ -c $^ $(FLAGS)
+	gcc -I includes -o $@ -c $^ $(FLAGS)
 
 .PHONY: clean fclean
 
