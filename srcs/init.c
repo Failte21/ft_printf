@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 17:32:20 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 09:21:53 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/10 15:54:37 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		init_functions(int(*p[127])(va_list, t_block *))
 	p[LONG_LONG] = print_long_long;
 	p[UNSIGNED_LONG_LONG] = print_unsigned_long_long;
 	p[STR_FLAG] = print_str;
-	p[WCHAR_T] = u_char;
+	p[WCHAR_T] = u_charr;
 	p[WCHAR_TT] = u_str;
 	p[UINTMAX_T] = print_uintmax_t;
 	p[INTMAX_T] = print_intmax_t;

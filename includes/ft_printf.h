@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 15:45:08 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/10 15:53:36 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int				print_uintmax_t(va_list ap, t_block *block);
 int				print_intmax_t(va_list ap, t_block *block);
 int				print_size_t(va_list ap, t_block *block);
 int				print_ssize_t(va_list ap, t_block *block);
-int				u_char(va_list ap, t_block *block);
+int				u_charr(va_list ap, t_block *block);
 int				u_str(va_list ap, t_block *block);
 void			print_base(uintmax_t n, unsigned char base, unsigned char a);
 int				print(uintmax_t n, t_block *block);

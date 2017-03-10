@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 15:42:41 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/08 17:13:18 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/10 15:53:13 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int				u_get(wchar_t u)
 	return (len);
 }
 
-int						u_char(va_list ap, t_block *block)
+int						u_charr(va_list ap, t_block *block)
 {
 	wchar_t			u;
 
