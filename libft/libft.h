@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:52:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/19 13:36:46 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/07 12:15:13 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include <string.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 
 typedef struct	s_list
@@ -26,6 +27,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+int				ft_atoi_base(char *s, unsigned char base);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);

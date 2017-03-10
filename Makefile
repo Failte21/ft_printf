@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lsimon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/02/15 09:10:45 by lsimon            #+#    #+#              #
-#    Updated: 2017/02/21 11:34:37 by lsimon           ###   ########.fr        #
+#    Created: 2017/03/10 10:21:00 by lsimon            #+#    #+#              #
+#    Updated: 2017/03/10 15:45:09 by lsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,12 @@ SRC =	libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c\
 		libft/ft_recursive_factorial.c libft/ft_sqrt.c libft/ft_print_bits.c\
 		libft/ft_sort_int_tab.c libft/ft_get_next_line.c libft/ft_word_count.c\
 		libft/ft_word_count_line.c libft/ft_ishex.c libft/ft_atoi_max.c\
-		libft/ft_nblen.c\
-		srcs/ft_printf.c srcs/errors.c srcs/f_list.c srcs/parser.c\
-		srcs/print_unsigned_base.c srcs/print_unsigned_long_base.c\
-		srcs/flags.c srcs/init.c
+		libft/ft_nblen.c libft/ft_atoi_base.c\
+		srcs/ft_printf.c srcs/init.c srcs/parser.c srcs/error.c srcs/flags.c\
+		srcs/modifiers.c srcs/print_char.c srcs/print_signed.c\
+		srcs/print_unsigned.c srcs/print.c srcs/conversion.c srcs/len.c\
+		srcs/get.c srcs/display.c srcs/print_base.c srcs/unicode.c\
+		srcs/precision.c\
 
 OBJ = $(SRC:.c=.o)
 

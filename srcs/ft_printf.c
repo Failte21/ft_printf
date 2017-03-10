@@ -6,72 +6,57 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/21 11:37:03 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/10 15:15:04 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	init_functions(int (*p[127]) (va_list, t_block))
+static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap, 
+		t_block *block, unsigned char (*get_conversion[127])(t_block *block))
 {
-	/*p['s'] = fstr;*/
-	/*p['p'] = fhexadress;*/
-	p['d'] = fsigned_decimal;
-	/*p['D'] = fsigned_decimal;*/
-	/*p['i'] = fsigned_decimal;*/
-	/*p['o'] = funsigned_octal;*/
-	/*p['O'] = funsigned_octal;*/
-	/*p['u'] = funsigned_decimal;*/
-	/*p['U'] = funsigned_decimal;*/
-	/*p['x'] = funsigned_hexa;*/
-	/*p['X'] = funsigned_hexalarge;*/
-	/*p['c'] = funsigned_char;*/
-}
-
-static int	get_fieldsize(t_block block)
-{
-	int	fieldsize;
-
-	fieldsize = block.min_field != 0 ? block.min_field : block.space;
-	return (fieldsize);
-}
-
-static int	flag_handler(int (*p[127]) (va_list, t_block), va_list ap, 
-		t_block *block)
-{
-	block->fieldsize = get_fieldsize(*block);
 	if (block->flag == '%')
 	{
-		block->fieldsize = ABS(block->fieldsize) < 1 ? 1 : block->fieldsize;
-		if (block->fieldsize > 0)
-			block->fieldsize = (print_field(1, block->fieldsize,
-						block->fieldchar));
+		if (!block->minus)
+			print_space(block);
 		ft_putchar('%');
-		if (block->fieldsize < 0)
-			block->fieldsize = (print_field(1, ABS(block->fieldsize),
-						block->fieldchar));
-		return (block->fieldsize);
+		if (block->minus)
+			print_space(block);
+		return (block->min_field > 1 ? block->min_field : 1);
 	}
-	return (*p[block->flag])(ap, *block);
+	block->conversion = get_conversion[block->flag](block);
+	block->base = get_base(block->flag);
+	block->a = get_a(block->flag);
+	block->prefix = get_prefix(block);
+	get_flag_exceptions(block);
+	/*printf("%d\n", block->conversion);*/
+	/*exit(1);*/
+	return (p[block->conversion](ap, block));
 }
 
-int			display(t_block *first, va_list ap,
-		int (*p[127]) (va_list, t_block))
+static int	display(t_block *first, va_list ap,
+		int (*p[127]) (va_list, t_block *),
+		unsigned char (*get_conversion[127])(t_block *block))
 {
 	int				space;
 	int				print_len;
+	t_block			*tmp;
 
 	print_len = 0;
 	while (first)
 	{
 		if (first->type == FLAG)
-			print_len += flag_handler(p, ap, first);
+			print_len += flag_handler(p, ap, first, get_conversion);
 		else
 		{
-			write(1, first->start, first->fieldsize);
-			print_len += first->fieldsize;
+			if (!first->len)
+				return (0);
+			write(1, first->start, first->len);
+			print_len += first->len;
 		}
+		tmp = first;
 		first = first->next;
+		free(tmp);
 	}
 	return (print_len);
 }
@@ -79,16 +64,19 @@ int			display(t_block *first, va_list ap,
 int			ft_printf(const char * restrict format, ...)
 {
 	va_list	ap;
-	int		(*p[127]) (va_list, t_block);
+	int				(*p[127]) (va_list, t_block *);
+	int				(*flags[127]) (t_block *, const char * restrict);
+	unsigned char	(*get_conversion[127]) (t_block *);
 	t_block	*first;
 
+	if (!(*format))
+		return (0);
 	init_functions(p);
-	if (!(first = new_block()))
-		return (-1);
-	if (parser(format, first) < 0)
+	init_flags_functions(flags);
+	init_conversion(get_conversion);
+	/*exit(1);*/
+	if (!(first = parser(format, flags, p)))
 		return (1);
-	ft_putchar(first->flag);
-	exit(1);
 	va_start(ap, format);
-	return (display(first, ap, p));
+	return (display(first, ap, p, get_conversion));
 }

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   print_base.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/18 23:15:28 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/19 10:31:16 by lsimon           ###   ########.fr       */
+/*   Created: 2017/03/05 12:02:37 by lsimon            #+#    #+#             */
+/*   Updated: 2017/03/10 11:18:39 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-void	ft_print_unsigned_base(unsigned int n, char base, char a)
+void	print_base(uintmax_t n, unsigned char base,
+		unsigned char a)
 {
-	char		to_add;
-	int			n_mod;
-	/*long int	n;*/
+	char			to_add;
+	unsigned char	n_mod;
 
-	/*ln = n > 0 ? (long)n : -((long)n);*/
 	if (n < base)
 	{
-		to_add = ln < 10 ? '0' : a - 10;
-		ft_putchar(ln + to_add);
+		to_add = n < 10 ? '0' : a - 10;
+		ft_putchar(n + to_add);
 	}
 	else
 	{
-		ft_print_unsigned_base((n / base), base, a);
+		print_base((n / base), base, a);
 		n_mod = n % base;
 		to_add = n_mod < 10 ? '0' : a - 10;
 		ft_putchar(n_mod + to_add);
