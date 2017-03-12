@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 15:15:04 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/12 11:24:46 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap,
 	{
 		if (!block->minus)
 			print_space(block);
-		ft_putchar('%');
+		write(1, "%", 1);;
 		if (block->minus)
 			print_space(block);
 		return (block->min_field > 1 ? block->min_field : 1);
@@ -29,8 +29,6 @@ static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap,
 	block->a = get_a(block->flag);
 	block->prefix = get_prefix(block);
 	get_flag_exceptions(block);
-	/*printf("%d\n", block->conversion);*/
-	/*exit(1);*/
 	return (p[block->conversion](ap, block));
 }
 
@@ -74,7 +72,6 @@ int			ft_printf(const char * restrict format, ...)
 	init_functions(p);
 	init_flags_functions(flags);
 	init_conversion(get_conversion);
-	/*exit(1);*/
 	if (!(first = parser(format, flags, p)))
 		return (1);
 	va_start(ap, format);

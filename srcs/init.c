@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 17:32:20 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 15:54:37 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/10 16:12:11 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_block			*new_block(void)
 	block->conversion = 0;
 	block->base = 10;
 	block->len = 0;
-	block->precision = 0;
+	block->precision = -1;
 	block->negative = 0;
 	block->next = NULL;
 	return (block);

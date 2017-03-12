@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:14:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 11:34:09 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/10 16:40:50 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ unsigned char	get_prefix(t_block *block)
 void		get_flag_exceptions(t_block *block)
 {
 	block->fieldchar = block->minus ? ' ' : block->fieldchar;
+	if (block->fieldchar == '0' && block->precision >= 0)
+		block->fieldchar = ' ';
 	if (block->space)
 		block->space -= (block->flag == 'u' || block->flag == 'U');
 	if (block->plus)
