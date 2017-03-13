@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 18:11:03 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 11:55:35 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 14:59:08 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ unsigned char	unsigned_conversion(t_block *block)
 	}
 	if (block->modifier == HH)
 		return (UNSIGNED_CHAR);
-	if (block->modifier == L || block->flag == 'p' || block->flag == 'U')
+	if (block->modifier == L || block->flag == 'p' || block->flag == 'U' ||
+			block->flag == 'O')
 		return (UNSIGNED_LONG);
 	if (block->modifier == LL)
 		return (UNSIGNED_LONG_LONG);

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 18:18:57 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/12 17:57:17 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 14:27:18 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			print(uintmax_t n, t_block *block)
 	write(1, "-", block->negative);
 	if (block->precision >= 0)
 		print_precision(block->nb_len - block->negative, block->precision);
-	if (n > 0)
+	if (n > 0 || block->flag == 'p')
 		print_prefix(block->prefix);
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 10:35:31 by lsimon            #+#    #+#             */
-/*   Updated: 2017/02/19 13:36:28 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 15:10:51 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ int	ft_nblen(int nb, int base)
 {
 	int len;
 
+	if (nb == 0)
+		return (1);
 	len = nb < 0 && base == 10 ? 1 : 0;
 	nb = nb < 0 ? -nb : nb;
 	while (nb > 0)

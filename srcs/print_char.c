@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 14:47:48 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 11:49:54 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 15:39:04 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int		print_unsigned_char(va_list ap, t_block *block)
 	write(1, " ", block->space);
 	if (!block->minus)
 		print_space(block);
-	if (c == 0)
+	if (c == 0 || c == UCHAR_MAX)
 	{
-		ft_putnbr(0);
-		return (1);
+		print_base(c, block->base, block->a);
+		return (ft_nblen(c, 10));
 	}
 	ft_putchar(c);
 	if (!block->minus)

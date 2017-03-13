@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 15:42:41 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 12:59:05 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 14:50:43 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@ int						u_charr(va_list ap, t_block *block)
 	wchar_t			u;
 
 	u = va_arg(ap, wchar_t);
+	/*if (!u)*/
+	/*{*/
+		/*write(1, "(null)", 6);*/
+		/*return (6);*/
+	/*}*/
 	return (u_get(u));
 }
 
@@ -96,8 +101,8 @@ int						u_str(va_list ap, t_block *block)
 	s = va_arg(ap, wchar_t *);
 	if (!s)
 	{
-		write(1, "NULL", 4);
-		return (4);
+		write(1, "(null)", 6);
+		return (6);
 	}
 	while (*s)
 	{
