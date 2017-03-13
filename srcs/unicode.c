@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 15:42:41 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 15:53:13 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 12:59:05 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ int						u_str(va_list ap, t_block *block)
 
 	len = 0;
 	s = va_arg(ap, wchar_t *);
+	if (!s)
+	{
+		write(1, "NULL", 4);
+		return (4);
+	}
 	while (*s)
 	{
 		len += u_get(*s);

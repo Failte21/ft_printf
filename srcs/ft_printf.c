@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/12 11:24:46 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 12:25:49 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap, 
 		t_block *block, unsigned char (*get_conversion[127])(t_block *block))
 {
+	get_flag_exceptions(block);
 	if (block->flag == '%')
 	{
+		block->datalen = 1;
 		if (!block->minus)
 			print_space(block);
 		write(1, "%", 1);;
@@ -28,7 +30,8 @@ static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap,
 	block->base = get_base(block->flag);
 	block->a = get_a(block->flag);
 	block->prefix = get_prefix(block);
-	get_flag_exceptions(block);
+	/*printf("%d\n", block->conversion);*/
+	/*get_flag_exceptions(block);*/
 	return (p[block->conversion](ap, block));
 }
 
@@ -47,10 +50,12 @@ static int	display(t_block *first, va_list ap,
 			print_len += flag_handler(p, ap, first, get_conversion);
 		else
 		{
-			if (!first->len)
-				return (0);
-			write(1, first->start, first->len);
-			print_len += first->len;
+			if (first->len)
+			{
+				/*printf("%d\n", first->len);*/
+				write(1, first->start, first->len);
+				print_len += first->len;
+			}
 		}
 		tmp = first;
 		first = first->next;

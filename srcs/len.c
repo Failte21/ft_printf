@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 09:46:00 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 16:11:44 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/12 17:57:11 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ unsigned int	get_data_len(t_block *block)
 		data_len += block->space;
 	data_len += (block->prefix == ADDR_LITTLE || block->prefix == ADDR_BIG) * 2;
 	data_len += block->prefix == FORCED_ZERO;
+	/*printf("%d\n", data_len);*/
 	if (block->precision > block->nb_len)
 		data_len += block->precision - block->nb_len;
+	/*printf("%d\n", data_len);*/
 	return (data_len);
 }
 

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/15 18:37:07 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 11:11:30 by lsimon           ###   ########.fr       */
+/*   Created: 2017/03/12 18:38:51 by lsimon            #+#    #+#             */
+/*   Updated: 2017/03/12 18:44:53 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
-static int	is_specifier(char c)
+int main()
 {
-	return (c == 's' || c == 'd' || c == 'd' || c == 'c' || c == 'p' ||
-			c == 'i' || c == 'u' || c == 'o' || c == 'x' || c == 'X' ||
-			c == '%' || c == 'D' || c == 'O' || c == 'U' || c == 'C' ||
-			c == 'S');
-}
+	int	fd;
+	char	*line;
+	int	rreturn;
 
-int			error_handler(char c)
-{
-	if (!is_specifier(c))
+	fd = open("test", O_RDONLY);
+	rreturn = ft_get_next_line(&line, fd);
+	while (rreturn)
 	{
-		/*printf("error\n");*/
-		return (0);
+		printf("%d\n, %s\n\n", rreturn, line);
+		rreturn = ft_get_next_line(&line, fd);
 	}
-	return (1);
 }

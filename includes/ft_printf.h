@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 15:53:36 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 12:23:30 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <locale.h>
+# include <limits.h>
+# include <fcntl.h>
 
 # define INCFORMATSPECIFIER 0
 # define NOTAVALIDFLAG 1
@@ -41,12 +43,12 @@
 # define WCHAR_TT 16
 # define CHAR 17
 # define SSIZE_T 18
-# define H 1
-# define HH 2
-# define J 3
+# define HH 1
+# define H 2
+# define Z 3
 # define L 4
 # define LL 5
-# define Z 6
+# define J 6
 # define ADDR_LITTLE 1
 # define ADDR_BIG 2
 # define FORCED_ZERO 3
@@ -97,6 +99,7 @@ void			init_flags_functions(int(*flags[127])(t_block *,
 			const char * restrict));
 void			init_conversion(
 		unsigned char (*get_conversion[127])(t_block *block));
+void			init_empty_str(t_block *block);
 int				modifier_h(t_block *block, const char * restrict s);
 int				modifier_l(t_block *block, const char * restrict s);
 int				modifier_j(t_block *block, const char * restrict s);

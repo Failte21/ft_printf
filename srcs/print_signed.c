@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 11:48:33 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/12 11:09:29 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/12 17:36:42 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	print_signed_int(va_list ap, t_block *block)
 	else
 		ln = n > 0 ? (uintmax_t)n : (uintmax_t)-n;
 	block->negative = n < 0;
+	/*printf("%d\n", block->negative);*/
+	/*exit(1);*/
 	return (print(ln, block));
 }
 

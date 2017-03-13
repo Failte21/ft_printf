@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 17:32:20 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 16:12:11 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/13 11:08:03 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_block			*new_block(void)
 	if (!(block = (t_block *)malloc(sizeof(t_block))))
 		return (NULL);
 	block->fieldsize = 0;
+	block->start = NULL;
 	block->plus = 0;
 	block->minus = 0;
 	block->hashtag = 0;
@@ -91,4 +92,15 @@ t_block			*new_block(void)
 	block->negative = 0;
 	block->next = NULL;
 	return (block);
+}
+
+void		init_empty_str(t_block *block)
+{
+	block->type = STR;
+	block->precision = 0;
+	block->space = 0;
+	block->min_field = 0;
+	block->plus = 0;
+	block->minus = 0;
+	block->hashtag = 0;
 }
