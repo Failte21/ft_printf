@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 12:23:30 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 14:47:13 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@
 # define FLAG 0
 # define STR 1
 # define ABS(a) a > 0 ? a : -a 
-# define SIGNED_CHAR 1
-# define UNSIGNED_CHAR 2
-# define SHORT 3
-# define UNSIGNED_SHORT 4
-# define LONG 5
-# define UNSIGNED_LONG 6
-# define LONG_LONG 7
-# define UNSIGNED_LONG_LONG 8
-# define INTMAX_T 9
-# define UINTMAX_T 10
-# define SIZE_T 11
-# define SIGNED_INT 12
-# define UNSIGNED_INT 13
-# define WCHAR_T 14
-# define STR_FLAG 15
-# define WCHAR_TT 16
-# define CHAR 17
-# define SSIZE_T 18
+# define UNSIGNED_CHAR 1
+# define UNSIGNED_SHORT 2
+# define UNSIGNED_INT 3
+# define UNSIGNED_LONG 4
+# define UNSIGNED_LONG_LONG 5
+# define SIZE_T 6
+# define SSIZE_T 7
+# define UINTMAX_T 8
+# define SIGNED_CHAR 9
+# define SHORT 10
+# define LONG 11
+# define LONG_LONG 12
+# define INTMAX_T 13
+# define SIGNED_INT 14
+# define CHAR 15
+# define WCHAR_T 16
+# define WCHAR_TT 17
+# define STR_FLAG 18
 # define HH 1
 # define H 2
 # define Z 3
@@ -108,24 +108,14 @@ t_block			*new_block(void);
 t_block			*parser(const char * restrict s, 
 		int (*flags[127])(t_block *, const char * restrict),
 		int (*p[127])(va_list, t_block *));
-int				print_signed_char(va_list ap, t_block *block);
-int				print_str(va_list ap, t_block *block);
-int				print_unsigned_char(va_list ap, t_block *block);
-int				print_char(va_list ap, t_block *block);
-int				print_unsigned_short(va_list ap, t_block *block);
-int				print_signed_int(va_list ap, t_block *block);
-int				print_short(va_list ap, t_block *block);
-int				print_unsigned_int(va_list ap, t_block *block);
-int				print_unsigned_long(va_list ap, t_block *block);
-int				print_unsigned_long_long(va_list ap, t_block *block);
-int				print_long_long(va_list ap, t_block *block);
-int				print_long(va_list ap, t_block *block);
-int				print_uintmax_t(va_list ap, t_block *block);
-int				print_intmax_t(va_list ap, t_block *block);
-int				print_size_t(va_list ap, t_block *block);
-int				print_ssize_t(va_list ap, t_block *block);
-int				u_charr(va_list ap, t_block *block);
-int				u_str(va_list ap, t_block *block);
+int				print_str(char *s, t_block *block);
+int				print_char(char c, t_block *block);
+int				u_charr(wchar_t c, t_block *block);
+int				u_str(wchar_t *s, t_block *block);
+int				p_signed(va_list ap, t_block *block);
+int				p_unsigned(va_list ap, t_block *block);
+int				p_str(va_list ap, t_block *block);
+int				p_char(va_list ap, t_block *block);
 void			print_base(uintmax_t n, unsigned char base, unsigned char a);
 int				print(uintmax_t n, t_block *block);
 void			print_space(t_block *block);

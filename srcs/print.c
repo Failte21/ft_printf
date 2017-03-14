@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 18:18:57 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 14:27:18 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 12:00:59 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	fill_block_data(t_block *block, uintmax_t n)
 
 int			print(uintmax_t n, t_block *block)
 {
+	/*printf("%d\n", n);*/
+	/*exit(1);*/
 	fill_block_data(block, n);
 	if (!block->minus)
 		print_space(block);

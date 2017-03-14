@@ -6,7 +6,7 @@
 #    By: lsimon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/10 10:21:00 by lsimon            #+#    #+#              #
-#    Updated: 2017/03/10 15:45:09 by lsimon           ###   ########.fr        #
+#    Updated: 2017/03/14 14:45:23 by lsimon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,9 @@ SRC =	libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c\
 		libft/ft_word_count_line.c libft/ft_ishex.c libft/ft_atoi_max.c\
 		libft/ft_nblen.c libft/ft_atoi_base.c\
 		srcs/ft_printf.c srcs/init.c srcs/parser.c srcs/error.c srcs/flags.c\
-		srcs/modifiers.c srcs/print_char.c srcs/print_signed.c\
-		srcs/print_unsigned.c srcs/print.c srcs/conversion.c srcs/len.c\
-		srcs/get.c srcs/display.c srcs/print_base.c srcs/unicode.c\
-		srcs/precision.c\
+		srcs/modifiers.c srcs/print_char.c srcs/print.c srcs/conversion.c\
+		srcs/len.c srcs/get.c srcs/display.c srcs/print_base.c srcs/unicode.c\
+		srcs/precision.c srcs/p_conversion.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -64,6 +63,6 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf libftprintf.a
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:14:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 14:48:44 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 14:41:47 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		get_flag_exceptions(t_block *block)
 	block->fieldchar = block->minus ? ' ' : block->fieldchar;
 	if (block->flag == 'c')
 		block->precision = 0;
-	if (block->fieldchar == '0' && block->precision >= 0)
+	if (block->fieldchar == '0' && block->precision >= 0 && block->flag != 'c')
 		block->fieldchar = ' ';
 	if (block->space)
 		block->space -= (block->flag == 'u' || block->flag == 'U');

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 14:47:21 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 14:52:05 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap, 
 		t_block *block, unsigned char (*get_conversion[127])(t_block *block))
 {
+	/*printf("%c\n", block->fieldchar);*/
+	/*printf("%d\n", block->minus);*/
 	get_flag_exceptions(block);
 	if (block->flag == '%')
 	{
@@ -30,19 +32,22 @@ static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap,
 	block->base = get_base(block->flag);
 	block->a = get_a(block->flag);
 	block->prefix = get_prefix(block);
+	/*return (p[block->conversion](ap, block));*/
+	/*exit(1);*/
 	/*printf("%d\n", block->conversion);*/
-	/*get_flag_exceptions(block);*/
-	return (p[block->conversion](ap, block));
+	if (block->conversion < 9)
+		return (p_unsigned(ap, block));
+	if (block->conversion < 15)
+		return (p_signed(ap, block));
+	if (block->conversion < 17)
+		return (p_char(ap, block));
+	return (p_str(ap, block));
 }
 
 static int	display_str(t_block *block)
 {
-	/*if (!block->minus)*/
-		/*print_space(block);*/
 	if (block->len)
 		write(1, block->start, block->len);
-	/*if (block->minus)*/
-		/*print_space(block);*/
 	return (block->len);
 }
 
@@ -78,7 +83,7 @@ int			ft_printf(const char * restrict format, ...)
 
 	if (!(*format))
 		return (0);
-	init_functions(p);
+	/*init_functions(p);*/
 	init_flags_functions(flags);
 	init_conversion(get_conversion);
 	if (!(first = parser(format, flags, p)))

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 15:42:41 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 14:50:43 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 14:49:55 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,27 +78,22 @@ static int				u_get(wchar_t u)
 	return (len);
 }
 
-int						u_charr(va_list ap, t_block *block)
+int						u_charr(wchar_t c, t_block *block)
 {
-	wchar_t			u;
-
-	u = va_arg(ap, wchar_t);
 	/*if (!u)*/
 	/*{*/
 		/*write(1, "(null)", 6);*/
 		/*return (6);*/
 	/*}*/
-	return (u_get(u));
+	return (u_get(c));
 }
 
-int						u_str(va_list ap, t_block *block)
+int						u_str(wchar_t *s, t_block *block)
 {
-	wchar_t			*s;
 	intmax_t		u;
 	unsigned int	len;
 
 	len = 0;
-	s = va_arg(ap, wchar_t *);
 	if (!s)
 	{
 		write(1, "(null)", 6);

@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 18:11:03 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 14:59:08 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 14:29:45 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned char	signed_conversion(t_block *block)
 		return (INTMAX_T);
 	if (block->modifier == Z)
 		return (SSIZE_T);
-	return (12);
+	return (14);
 }
 
 unsigned char	unsigned_conversion(t_block *block)
@@ -59,7 +59,7 @@ unsigned char	unsigned_conversion(t_block *block)
 		return (UINTMAX_T);
 	if (block->modifier == Z)
 		return (SIZE_T);
-	return (13);
+	return (3);
 }
 
 unsigned char	unsigned_long_conversion(t_block *block)

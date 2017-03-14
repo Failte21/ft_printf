@@ -6,23 +6,24 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 14:47:48 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/13 15:39:04 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 14:38:32 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		print_char(va_list ap, t_block *block)
+int		print_char(char c, t_block *block)
 {
-	signed char c;
+	/*signed char c;*/
 
-	c = va_arg(ap, signed int);
+	/*c = va_arg(ap, signed int);*/
 	block->precision = c == 0 ? 0 : block->precision;
 	block->nb_len = 1;
 	block->datalen = get_data_len(block);
 	block->datalen -= block->space;
 	block->min_field = block->min_field > block->datalen ? block->min_field :
 		block->datalen;
+	/*printf("%c\n", block->fieldchar);*/
 	if (!block->minus)
 		print_space(block);
 	ft_putchar(c);
@@ -54,11 +55,8 @@ int		print_unsigned_char(va_list ap, t_block *block)
 	return (block->min_field);
 }
 
-int		print_str(va_list ap, t_block *block)
+int		print_str(char *s, t_block *block)
 {
-	char			*s;
-
-	s = va_arg(ap, char *);
 	if (!s)
 	{
 		ft_putstr("(null)");
