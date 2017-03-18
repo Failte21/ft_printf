@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 18:18:57 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/14 12:00:59 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 18:18:53 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,27 @@ static int	weird(t_block *block, uintmax_t n)
 	return (0);
 }
 
-static void	fill_block_data(t_block *block, uintmax_t n)
+void		fill_block_data(t_block *block, uintmax_t n)
 {
-	block->nb_len = get_len(n, block->base);
+	/*printf("%d\n", block->type);*/
+	/*exit(1);*/
+	if (block->type == FLAG)
+		block->nb_len = get_len(n, block->base);
+	else
+		block->nb_len = n;
 	block->nb_len -= weird(block, n);
+	/*printf("%d\n", block->nb_len);*/
 	/*printf("%d\n", block->nb_len);*/
 	/*printf("%d\n", block->precision);*/
 	block->precision -= block->negative;
 	block->datalen = get_data_len(block) + (block->precision >
 			(block->nb_len - block->negative) && block->negative);
 	/*printf("%d\n", block->datalen);*/
+	/*printf("%d\n", block->datalen);*/
 	block->min_field = block->min_field > block->datalen ? block->min_field :
 		block->datalen;
+	/*printf("%d\n", block->min_field);*/
+	/*exit(1);*/
 	write(1, " ", (block->space && !(block->negative) && !(block->plus)));
 }
 

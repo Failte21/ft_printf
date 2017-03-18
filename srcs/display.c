@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 10:00:48 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/10 11:13:05 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 17:10:25 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	print_space(t_block *block)
 {
+	/*printf("%d\n", block->min_field);*/
+	/*exit(1);*/
 	if (!block->minus && block->prefix > 0 && block->prefix < 3 &&
 			block->fieldchar == '0')
 	{

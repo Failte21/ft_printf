@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:49 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/14 14:47:13 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 18:29:33 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,6 @@ unsigned char	signed_conversion(t_block *block);
 unsigned char	unsigned_conversion(t_block *block);
 unsigned char	unsigned_long_conversion(t_block *block);
 unsigned char	signed_long_conversion(t_block *block);
+void			fill_block_data(t_block *block, uintmax_t n);
 
 #endif

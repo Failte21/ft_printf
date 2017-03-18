@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 09:08:24 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/14 14:52:05 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 18:18:38 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap,
 	block->base = get_base(block->flag);
 	block->a = get_a(block->flag);
 	block->prefix = get_prefix(block);
-	/*return (p[block->conversion](ap, block));*/
-	/*exit(1);*/
 	/*printf("%d\n", block->conversion);*/
 	if (block->conversion < 9)
 		return (p_unsigned(ap, block));
@@ -46,9 +44,12 @@ static int	flag_handler(int (*p[127]) (va_list, t_block *), va_list ap,
 
 static int	display_str(t_block *block)
 {
+	/*printf("%d\n", block->len);*/
+	fill_block_data(block, block->len);
+	print_space(block);
 	if (block->len)
 		write(1, block->start, block->len);
-	return (block->len);
+	return (block->min_field);
 }
 
 static int	display(t_block *first, va_list ap,

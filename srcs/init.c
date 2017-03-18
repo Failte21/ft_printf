@@ -6,7 +6,7 @@
 /*   By: lsimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 17:32:20 by lsimon            #+#    #+#             */
-/*   Updated: 2017/03/14 11:48:50 by lsimon           ###   ########.fr       */
+/*   Updated: 2017/03/14 17:14:47 by lsimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,11 @@ void		init_empty_str(t_block *block)
 {
 	block->type = STR;
 	block->precision = 0;
+	/*block->min_field = 0;*/
 	block->space = 0;
-	block->min_field = 0;
 	block->plus = 0;
 	block->minus = 0;
 	block->hashtag = 0;
+	/*printf("%d\n", block->min_field);*/
+	/*exit(1);*/
 }
